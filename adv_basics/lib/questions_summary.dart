@@ -15,17 +15,39 @@ class QuestionsSummary extends StatelessWidget {
             (data) {
               return Row(
                 children: [
-                  Text(((data['question_index'] as int) + 1).toString()),
+                  CircleAvatar(
+                    backgroundColor:
+                        data['user_answer'] == data['correct_answer']
+                            ? Colors.blueAccent
+                            : Colors.purpleAccent,
+                    child: Text(
+                      ((data['question_index'] as int) + 1).toString(),
+                    ),
+                  ),
                   Expanded(
-                    child: Column(
-                      children: [
-                        Text(data['question'] as String),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Text(data['user_answer'] as String),
-                        Text(data['correct_answer'] as String),
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            data['question'] as String,
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 16),
+                          ),
+                          const SizedBox(
+                            height: 3,
+                          ),
+                          Text(
+                            data['user_answer'] as String,
+                            style: const TextStyle(color: Colors.purpleAccent),
+                          ),
+                          Text(
+                            data['correct_answer'] as String,
+                            style: const TextStyle(color: Colors.blueAccent),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
