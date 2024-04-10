@@ -6,9 +6,11 @@ class ResultScreen extends StatelessWidget {
   const ResultScreen({
     super.key,
     required this.chosenAnswers,
+    required this.onRetakeQuiz,
   });
 
   final List<String> chosenAnswers;
+  final void Function() onRetakeQuiz;
 
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
@@ -57,9 +59,7 @@ class ResultScreen extends StatelessWidget {
               height: 30,
             ),
             TextButton.icon(
-              onPressed: () {
-                //
-              },
+              onPressed: onRetakeQuiz,
               style: TextButton.styleFrom(
                 foregroundColor: Colors.white,
               ),
