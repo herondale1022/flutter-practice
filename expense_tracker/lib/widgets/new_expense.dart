@@ -34,27 +34,23 @@ class _NewExpenseState extends State<NewExpense> {
             ),
           ),
           TextField(
-            keyboardType: const TextInputType.numberWithOptions(
-              decimal: true,
-            ),
-            maxLength: 6,
             controller: _amountController,
+            keyboardType: TextInputType.number,
             decoration: const InputDecoration(
+              prefixText: '\$',
               label: Text('Amount'),
             ),
           ),
           Row(
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  print('Cancel Operation');
-                },
+              TextButton(
+                onPressed: () {},
                 child: const Text('Cancel'),
               ),
               ElevatedButton(
                 onPressed: () {
                   print(_titleController.text);
-                  print(_titleController.value);
+                  print(_amountController.text);
                 },
                 child: const Text('Save Expense'),
               )
